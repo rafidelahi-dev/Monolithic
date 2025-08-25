@@ -1,0 +1,32 @@
+@import "tailwindcss";
+body {
+  overflow-x: hidden;
+}
+
+
+.shimmer-text {
+  /* Base background gradient with yellow as default */
+  background: linear-gradient(
+    -60deg,
+    #ca8a04 30%,  /* darker golden yellow */
+    #facc15 50%,  /* bright yellow highlight */
+    #ca8a04 70%   /* darker golden yellow */
+  );
+  background-size: 200% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* makes text follow gradient */
+
+  animation: shimmer 2.5s infinite linear;
+  animation-delay: 4s; /* start shimmer after typing */
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
