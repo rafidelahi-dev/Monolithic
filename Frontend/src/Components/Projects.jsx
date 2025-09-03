@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import image1 from "../assets/After_Annan.jpg"
 
 const Projects = () => {
   // Sample project data - replace with actual project images and details
@@ -7,14 +8,14 @@ const Projects = () => {
       id: 1,
       title: "Modern Living Room",
       category: "Residential",
-      image: "../assets/After_Annan.jpg",
+      image: image1,
       description: "Contemporary living space with minimalist design and natural lighting"
     },
     {
       id: 2,
       title: "Executive Office",
       category: "Commercial",
-      image: "../assets/After corridor.jpg",
+      image: "/assets/After_corridor",
       description: "Professional workspace designed for productivity and comfort"
     },
     {
