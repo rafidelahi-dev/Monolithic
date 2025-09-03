@@ -5,21 +5,21 @@ body {
 
 
 .shimmer-text {
-  /* Base background gradient with yellow as default */
   background: linear-gradient(
     -60deg,
-    #ca8a04 30%,  /* darker golden yellow */
-    #facc15 50%,  /* bright yellow highlight */
-    #ca8a04 70%   /* darker golden yellow */
+    #ca8a04 20%,
+    #facc15 40%,
+    #fde68a 50%,   /* softer pale yellow in the middle */
+    #facc15 60%,
+    #ca8a04 80%
   );
-  background-size: 200% 100%;
+  background-size: 300% 100%;
 
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* makes text follow gradient */
+  color: transparent;
 
-  animation: shimmer 2.5s infinite linear;
-  animation-delay: 4s; /* start shimmer after typing */
+  animation: shimmer 4s ease-in-out infinite;
 }
 
 @keyframes shimmer {
