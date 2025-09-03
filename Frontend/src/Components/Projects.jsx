@@ -7,42 +7,42 @@ const Projects = () => {
       id: 1,
       title: "Modern Living Room",
       category: "Residential",
-      image: "../assets/After Annan.HEIC",
+      image: "../assets/After_Annan.jpg",
       description: "Contemporary living space with minimalist design and natural lighting"
     },
     {
       id: 2,
       title: "Executive Office",
       category: "Commercial",
-      image: "../assets/After corridor.HEIC",
+      image: "../assets/After corridor.jpg",
       description: "Professional workspace designed for productivity and comfort"
     },
     {
       id: 3,
       title: "Luxury Bedroom Suite",
       category: "Residential",
-      image: "../assets/After master.HEIC",
+      image: "../assets/After master.jpg",
       description: "Elegant bedroom with custom furniture and ambient lighting"
     },
     {
       id: 4,
       title: "Restaurant Interior",
       category: "Commercial",
-      image: "../assets/After Annan.HEIC",
+      image: "../assets/After Annan.jpg",
       description: "Warm and inviting dining atmosphere with custom seating"
     },
     {
       id: 5,
       title: "Kitchen Renovation",
       category: "Residential",
-      image: "../assets/After Annan.HEIC",
+      image: "../assets/After Annan.jpg",
       description: "Modern kitchen with sustainable materials and smart storage"
     },
     {
       id: 6,
       title: "Boutique Store",
       category: "Commercial",
-      image: "../assets/After Annan.HEIC",
+      image: "../assets/After Annan.jpg",
       description: "Retail space optimized for customer experience and product display"
     }
   ];
@@ -104,7 +104,9 @@ const Projects = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
                     e.target.src = `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`;
-                  }}
+                    console.log(e);
+                  }
+                }
                 />
                 
                 {/* Category Badge */}
