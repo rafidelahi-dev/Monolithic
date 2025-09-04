@@ -1,4 +1,4 @@
-import about from "../assets/about.jpg"
+import about from "/public/assets/About.jpg"
 import { FaHome, FaCouch } from "react-icons/fa";
 import { HiHomeModern, HiBuildingOffice2 } from "react-icons/hi2";
 

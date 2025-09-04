@@ -1,6 +1,6 @@
-import Image1 from "../assets/Hero Image 1.jpg"
-import Image2 from "../assets/Hero Image 2.jpg"
-import Image3 from "../assets/Hero Image 3.jpg"
+import Image1 from "/public/assets/Hero Image 1.jpg"
+import Image2 from "/public/assets/Hero Image 2.jpg"
+import Image3 from "/public/assets/Hero Image 3.jpg"
 import "../App.css"
 import { useState, useEffect } from "react"
 
@@ -32,7 +32,7 @@ const Hero = () => {
     }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative w-screen h-screen overflow-hidden pt-20">
         {images.map((image, index) => (
             <div 
             key={index}

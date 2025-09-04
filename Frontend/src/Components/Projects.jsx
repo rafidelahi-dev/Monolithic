@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import image1 from "../assets/After_Annan.jpg"
+import { useState } from 'react';
+import image1 from "/public/assets/After_Annan.jpg"
+import "../App.css"
 
 const Projects = () => {
   // Sample project data - replace with actual project images and details
@@ -15,35 +16,35 @@ const Projects = () => {
       id: 2,
       title: "Executive Office",
       category: "Commercial",
-      image: "/assets/After_corridor",
+      image: "/assets/After_corridor.jpg",
       description: "Professional workspace designed for productivity and comfort"
     },
     {
       id: 3,
       title: "Luxury Bedroom Suite",
       category: "Residential",
-      image: "../assets/After master.jpg",
+      image: "/assets/After_master.jpg",
       description: "Elegant bedroom with custom furniture and ambient lighting"
     },
     {
       id: 4,
       title: "Restaurant Interior",
       category: "Commercial",
-      image: "../assets/After Annan.jpg",
+      image: "/assets/After_Annan.jpg",
       description: "Warm and inviting dining atmosphere with custom seating"
     },
     {
       id: 5,
       title: "Kitchen Renovation",
       category: "Residential",
-      image: "../assets/After Annan.jpg",
+      image: "/assets/After_Annan.jpg",
       description: "Modern kitchen with sustainable materials and smart storage"
     },
     {
       id: 6,
       title: "Boutique Store",
       category: "Commercial",
-      image: "../assets/After Annan.jpg",
+      image: "/assets/After_Annan.jpg",
       description: "Retail space optimized for customer experience and product display"
     }
   ];
@@ -58,13 +59,13 @@ const Projects = () => {
   const categories = ['All', 'Residential', 'Commercial'];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-100 to-blue-50">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Our Projects
-          </h2>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-br from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                Our Projects
+            </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
             Discover our portfolio of stunning interior designs that transform spaces 
             into beautiful, functional environments tailored to our clients' unique needs.
@@ -78,8 +79,8 @@ const Projects = () => {
                 onClick={() => setFilter(category)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   filter === category
-                    ? 'bg-blue-600 text-white shadow-lg transform scale-105'
-                    : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-md'
+                    ? 'bg-yellow-600 text-white shadow-lg transform scale-105'
+                    : 'bg-white text-gray-600 hover:bg-yellow-50 hover:text-yellow-600 shadow-md'
                 }`}
               >
                 {category}
