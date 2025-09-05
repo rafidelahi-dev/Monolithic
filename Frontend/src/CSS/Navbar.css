@@ -32,13 +32,29 @@
 }
 
 .navbar.scrolled .nav-logo {
-  color: #333; /* Change to match your design */
+  color: #333;
+}
+
+/* Hamburger Menu Toggle */
+.nav-toggle {
+  display: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.navbar.scrolled .nav-toggle {
+  color: #333;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
@@ -49,7 +65,7 @@
 }
 
 .navbar.scrolled .nav-link {
-  color: #333; /* Change to match your design */
+  color: #333;
 }
 
 .nav-link:hover {
@@ -57,12 +73,59 @@
 }
 
 .navbar.scrolled .nav-link:hover {
-  color: #555; /* Change to match your design */
+  color: #555;
 }
 
-/* Responsive design (optional) */
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
   .nav-menu {
-    display: none; /* You might want to add a hamburger menu for mobile */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: linear-gradient(135deg, #f59e0b, #ca8a04);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease-in-out;
+    gap: 2rem;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-menu-active {
+    right: 0;
+  }
+
+  .nav-item {
+    margin: 1rem 0;
+  }
+
+  /* Ensure links are visible in mobile menu */
+  .nav-menu .nav-link {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .nav-menu .nav-link:hover {
+    color: #555;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 1024px) {
+  .nav-menu {
+    gap: 1.5rem;
   }
 }

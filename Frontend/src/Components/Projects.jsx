@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
-import "../App.css"
+import { useContext, useState } from "react";
+import { DataContext } from "./DataProvider"; // make sure path matches where you saved DataProvider
+import "../App.css";
 
 const Projects = () => {
-  const [projects, setProjects] = useState([])
-  const [categories, setCategories] = useState([])
+  const { data, loading } = useContext(DataContext);
 
+  if (loading) return <p>Loading projects...</p>;
+  if (!data || !data.projects) return <p>No projects available</p>;
 
-  useEffect(() => {
-    fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
-    .then((res) => res.json())
-    .then((data) => { 
-      console.log("Fetched Data:", data);
-      setProjects(data.projects)
-      setCategories([...data.categories.map(c => c.Name)])
-    }).catch((err) => console.error("Error fetching images:", err));
-  }, [])
+  // Extract data
+  const projects = data.projects;
+  const categories = data.categories?.map((c) => c.Name) || [];
 
 
   const [filter, setFilter] = useState('All');

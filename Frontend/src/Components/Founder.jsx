@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useContext, useState } from "react";
+import { DataContext } from "./DataProvider";
 
 const Founder = () => {
+  const { data, loading } = useContext(DataContext);
   const [isHovered, setIsHovered] = useState(false);
-  const [founder, setFounder] = useState([])
 
-  useEffect(() => {
-    fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
-    .then((res) => res.json())
-    .then((data) => {
-        console.log("Showing fetched data:", data.founder[0])
-        setFounder(data.founder[0])
-    })
-  }, [])
+  if (loading) return <p>Loading...</p>;
+  if (!data || !data.founder || data.founder.length === 0) {
+    return <p>No founder data available</p>;
+  }
+
+  const founder = data.founder[0]; // get first founder row
 
   // Sample founder data - replace with your uncle's actual information
   const founderData = {

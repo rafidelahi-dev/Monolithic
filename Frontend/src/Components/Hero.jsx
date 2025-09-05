@@ -40,7 +40,7 @@ const Hero = () => {
 
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden pt-20">
+    <div className="relative w-screen h-screen overflow-hidden pt-16 md:pt-20">
         {images.map((image, index) => (
             <div 
                 key={index}
@@ -55,22 +55,21 @@ const Hero = () => {
             ></div>
         ))}
          {/*Overlay content on top of the image*/}
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/75 flex items-center justify-start">
-                <div className="text-left ml-8">
-                    <h1 className="text-white text-8xl font-bold">
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/75 flex items-center justify-center md:justify-start px-4 md:px-0">
+                <div className="text-center md:text-left md:ml-8 max-w-4xl">
+                    <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold">
                         Welcome to {" "}
                         <span className="shimmer-text text-yellow-400">
                             {text.slice(0, visibleLetters)}
                         </span>
                     </h1>
-                    <p className="mt-4 text-white text-3xl">
+                    <p className="mt-4 text-white text-lg sm:text-xl md:text-2xl lg:text-3xl">
                         Where <b>Imagination</b> meets <em>Reality</em>
                     </p>
                 </div>
             </div>
-            
     </div>
-  )
+)
 }
 
 export default Hero
