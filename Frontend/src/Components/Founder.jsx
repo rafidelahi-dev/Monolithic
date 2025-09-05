@@ -5,6 +5,9 @@ const Founder = () => {
   const { data, loading } = useContext(DataContext);
   const [isHovered, setIsHovered] = useState(false);
 
+
+  
+
   const founder = data.founder[0]; // get first founder row
 
   // Sample founder data - replace with your uncle's actual information

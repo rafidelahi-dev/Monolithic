@@ -7,6 +7,8 @@ import { DataContext } from "./DataProvider";
 const About = () => {
   const { data} = useContext(DataContext);
 
+
+
   const aboutImage = data.about; 
 
 

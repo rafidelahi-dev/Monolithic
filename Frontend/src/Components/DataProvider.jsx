@@ -4,9 +4,10 @@ export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const [data, setData] = useState({
+    about: [{}],
     projects: [],
     categories: [],
-    founder: [],
+    founder: [{}],
     contacts: [],
     footer: []
     });
