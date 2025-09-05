@@ -108,7 +108,7 @@ const Founder = () => {
             {/* Name & Title */}
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-                {founder.name}
+                {founderData.name}
               </h3>
               <p className="text-xl text-yellow-600 font-medium mb-6">
                 {founder.title}
