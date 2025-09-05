@@ -1,50 +1,43 @@
-import "../App.css"
-import { useState, useEffect } from "react"
+import "../App.css";
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from "./DataProvider"; // 👈 import context
 
 const Hero = () => {
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [visibleLetters, setVisibleLetters] = useState();
-    // const images = [
-    // "/assets/Hero_Image_1.jpg",
-    // "/assets/Hero_Image_2.jpg",
-    // "/assets/Hero_Image_3.jpg"
-    // ]
-    const [images, setImages] = useState([])
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleLetters, setVisibleLetters] = useState(0);
 
-    const text = "Monolithic"
+  const { data } = useContext(DataContext); // 👈 get shared data
+  const text = "Monolithic";
 
-    useEffect(() => {
-        fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
-            .then((res) => res.json()) 
-            .then((data) => {
-                console.log("Fetched data:", data);
-              setImages(data.hero);
-            })
-            .catch((err) => console.error("Error fetching images:", err));
-        }, []); // empty dependency → runs only once
+  // Get hero images from context
+  const images = data?.hero || [];
 
-        // Slideshow
-        useEffect(() => {
-        if (images.length === 0) return; // 👈 don’t run until data is loaded
+  // Slideshow effect
+  useEffect(() => {
+    if (images.length === 0) return;
 
-        const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % images.length);
-        }, 3000);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
 
-        return () => clearInterval(interval);
-        }, [images]); 
+    return () => clearInterval(interval);
+  }, [images]);
 
-    useEffect(() => {
-        setVisibleLetters(0);
-        const interval = setInterval(() => {
-            setVisibleLetters((prev) => {
-                if (prev < text.length) return prev + 1;
-                clearInterval(interval);
-                return prev;
-            })
-        }, 350)
-        return () => clearInterval(interval);
-    }, []);
+  // Typing effect
+  useEffect(() => {
+    setVisibleLetters(0);
+    const interval = setInterval(() => {
+      setVisibleLetters((prev) => {
+        if (prev < text.length) return prev + 1;
+        clearInterval(interval);
+        return prev;
+      });
+    }, 350);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
 
   return (
     <div className="relative w-screen h-screen overflow-hidden pt-20">

@@ -6,12 +6,14 @@ import Founder from './Components/Founder'
 import Contact from './Components/Contact'
 import Footer from './Components/Footer'
 import Navbar from './Components/Navbar'
+import DataProvider from './Components/DataProvider'
 
 function App() {
   
 
   return (
     <>
+    <DataProvider>
       <Navbar/>
       <Hero/>
       <About/>
@@ -19,6 +21,7 @@ function App() {
       <Founder/>
       <Contact/>
       <Footer/>
+    </DataProvider>
     </>
   )
 }
