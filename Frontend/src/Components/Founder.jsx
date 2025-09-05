@@ -5,7 +5,7 @@ const Founder = () => {
   const { data, loading } = useContext(DataContext);
   const [isHovered, setIsHovered] = useState(false);
 
-  if (loading) return <p>Loading...</p>;
+
   if (!data || !data.founder || data.founder.length === 0) {
     return <p>No founder data available</p>;
   }

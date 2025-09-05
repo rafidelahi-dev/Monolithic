@@ -7,8 +7,6 @@ import { DataContext } from "./DataProvider";
 const About = () => {
   const { data, loading } = useContext(DataContext);
 
-  if (loading) return <p>Loading About section...</p>;
-  if (!data || !data.about) return <p>No About data available</p>;
 
   const aboutImage = data.about; 
 
