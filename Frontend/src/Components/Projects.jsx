@@ -3,9 +3,9 @@ import { DataContext } from "./DataProvider"; // make sure path matches where yo
 import "../App.css";
 
 const Projects = () => {
-  const { data, loading } = useContext(DataContext);
+  const { data } = useContext(DataContext);
 
-  if (!data || !data.projects) return <p>No projects available</p>;
+
 
   // Extract data
   const projects = data.projects;

@@ -3,7 +3,14 @@ import { createContext, useEffect, useState } from "react";
 export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({
+    projects: [],
+    categories: [],
+    founder: [],
+    contacts: [],
+    footer: []
+    });
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

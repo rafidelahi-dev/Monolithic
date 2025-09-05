@@ -5,9 +5,7 @@ import { useContext } from "react";
 import { DataContext } from "./DataProvider";
 
 const About = () => {
-  const { data, loading } = useContext(DataContext);
-
-  if (!data || !data.about) return <p>No About data available</p>;
+  const { data} = useContext(DataContext);
 
   const aboutImage = data.about; 
 
