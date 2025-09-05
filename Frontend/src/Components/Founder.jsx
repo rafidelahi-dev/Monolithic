@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Founder = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [founder, setFounder] = useState([])
+
+  useEffect(() => {
+    fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
+    .then((res) => res.json())
+    .then((data) => {
+        console.log("Showing fetched data:", data.founder[0])
+        setFounder(data.founder[0])
+    })
+  }, [])
 
   // Sample founder data - replace with your uncle's actual information
   const founderData = {
@@ -61,8 +71,8 @@ const Founder = () => {
               onMouseLeave={() => setIsHovered(false)}
             >
               <img
-                src={founderData.image}
-                alt={founderData.name}
+                src={founder.imageurl}
+                alt={founder.name}
                 className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   e.target.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
@@ -75,7 +85,7 @@ const Founder = () => {
               }`}>
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <blockquote className="text-lg italic font-light">
-                    "{founderData.philosophy}"
+                    "{founder.philosophy}"
                   </blockquote>
                 </div>
               </div>
@@ -84,11 +94,11 @@ const Founder = () => {
             {/* Stats Cards */}
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div className="bg-yellow-50 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-600 mb-2">{founderData.experience}</div>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">{`${founder.experience}+`}</div>
                 <div className="text-gray-600 font-medium">Experience</div>
               </div>
               <div className="bg-yellow-50 rounded-xl p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-600 mb-2">{founderData.projectsCompleted}</div>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">{`${founder.projects_completed}+`}</div>
                 <div className="text-gray-600 font-medium">Projects Completed</div>
               </div>
             </div>
@@ -99,10 +109,10 @@ const Founder = () => {
             {/* Name & Title */}
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-                {founderData.name}
+                {founder.name}
               </h3>
               <p className="text-xl text-yellow-600 font-medium mb-6">
-                {founderData.title}
+                {founder.title}
               </p>
             </div>
 
@@ -110,12 +120,7 @@ const Founder = () => {
             <div>
               <h4 className="text-2xl font-bold text-gray-800 mb-4">My Story</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
-                {founderData.story}
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Today, I lead a team dedicated to creating spaces that not only look exceptional 
-                but also enhance the daily experiences of everyone who uses them. Each project 
-                is an opportunity to blend functionality with beauty, tradition with innovation.
+                {founder.my_story}
               </p>
             </div>
 
@@ -123,7 +128,7 @@ const Founder = () => {
             <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-yellow-600">
               <h4 className="text-lg font-bold text-gray-800 mb-3">Design Philosophy</h4>
               <blockquote className="text-gray-600 italic">
-                "{founderData.philosophy}"
+                "{founder.design_philosophy}"
               </blockquote>
             </div>
 

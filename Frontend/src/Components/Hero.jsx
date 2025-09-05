@@ -14,7 +14,7 @@ const Hero = () => {
     const text = "Monolithic"
 
     useEffect(() => {
-        fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/hero")
+        fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
             .then((res) => res.json()) 
             .then((data) => {
                 console.log("Fetched data:", data);
@@ -55,7 +55,7 @@ const Hero = () => {
                 index === currentIndex ? "opacity-80" : "opacity-0"
                 }`}
                 style={{
-                backgroundImage: `url(${image.imageUrl})`,
+                backgroundImage: `url(${image.ImageUrl})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 }}

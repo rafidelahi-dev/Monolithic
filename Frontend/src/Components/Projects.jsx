@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import image1 from "/public/assets/After_Annan.jpg"
 import "../App.css"
 
 const Projects = () => {
@@ -8,19 +7,13 @@ const Projects = () => {
 
 
   useEffect(() => {
-    fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/projects")
+    fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
     .then((res) => res.json())
     .then((data) => { 
       console.log("Fetched Data:", data);
       setProjects(data.projects)
+      setCategories([...data.categories.map(c => c.Name)])
     }).catch((err) => console.error("Error fetching images:", err));
-
-    fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/categories")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Fetched data for categories: ", data)
-      setCategories([...data.categories.map(c => c.name)])
-    })
   }, [])
 
 
@@ -29,7 +22,7 @@ const Projects = () => {
 
   const filteredProjects = filter === 'All' 
     ? projects 
-    : projects.filter(project => project.category === filter);
+    : projects.filter(project => project.Category === filter);
 
 
   return (
@@ -75,8 +68,8 @@ const Projects = () => {
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src={project.thumbnail}
-                  alt={project.title}
+                  src={project.Thumbnail}
+                  alt={project.Title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
                     e.target.src = `https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`;
@@ -88,11 +81,11 @@ const Projects = () => {
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    project.category === 'Residential' 
+                    project.Category === 'Residential' 
                       ? 'bg-green-100 text-green-800' 
                       : 'bg-blue-100 text-blue-800'
                   }`}>
-                    {project.category}
+                    {project.Category}
                   </span>
                 </div>
 
@@ -101,8 +94,8 @@ const Projects = () => {
                   hoveredProject === project.id ? 'opacity-100' : 'opacity-0'
                 }`}>
                   <div className="text-center text-white transform transition-transform duration-300 translate-y-4 group-hover:translate-y-0">
-                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-sm px-4">{project.shortDescription}</p>
+                    <h3 className="text-xl font-bold mb-2">{project.Title}</h3>
+                    <p className="text-sm px-4">{project.Short_Description}</p>
                     <button className="mt-4 px-6 py-2 bg-white text-gray-800 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300">
                       View Details
                     </button>
@@ -113,10 +106,10 @@ const Projects = () => {
               {/* Project Info (always visible) */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                  {project.title}
+                  {project.Title}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {project.shortDescription}
+                  {project.Short_Description}
                 </p>
               </div>
             </div>

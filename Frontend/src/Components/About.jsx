@@ -9,7 +9,7 @@ const About = () => {
     const [aboutImage, setAboutImage] = useState([])
 
     useEffect(() => {
-        fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/about")
+        fetch("https://script.google.com/macros/s/AKfycbxf1OMYTHlpJLYA8JmXz4YqzMHwwHjA-HWxKAj1AvafqWR_t5hGdFIxK7p9IGi_UFAT-Q/exec")
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -20,7 +20,7 @@ const About = () => {
   return (
     <section id="about" className="relative w-full h-screen flex items-center justify-center text-white ">
         <div className="absolute inset-0 bg-cover bg-center"
-        style={{backgroundImage: `url(${aboutImage[0]})`}}/>
+        style={{ backgroundImage: `url(${aboutImage[0]?.imageUrl})` }}/>
 
         <div className="absolute inset-0 bg-black/70"/>
 
