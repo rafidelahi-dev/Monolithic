@@ -1,53 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import image1 from "/public/assets/After_Annan.jpg"
 import "../App.css"
 
 const Projects = () => {
-  // Sample project data - replace with actual project images and details
-  const projects = [
-    {
-      id: 1,
-      title: "Modern Living Room",
-      category: "Residential",
-      image: image1,
-      description: "Contemporary living space with minimalist design and natural lighting"
-    },
-    {
-      id: 2,
-      title: "Executive Office",
-      category: "Commercial",
-      image: "/assets/After_corridor.jpg",
-      description: "Professional workspace designed for productivity and comfort"
-    },
-    {
-      id: 3,
-      title: "Luxury Bedroom Suite",
-      category: "Residential",
-      image: "/assets/After_master.jpg",
-      description: "Elegant bedroom with custom furniture and ambient lighting"
-    },
-    {
-      id: 4,
-      title: "Restaurant Interior",
-      category: "Commercial",
-      image: "/assets/After_Annan.jpg",
-      description: "Warm and inviting dining atmosphere with custom seating"
-    },
-    {
-      id: 5,
-      title: "Kitchen Renovation",
-      category: "Residential",
-      image: "/assets/After_Annan.jpg",
-      description: "Modern kitchen with sustainable materials and smart storage"
-    },
-    {
-      id: 6,
-      title: "Boutique Store",
-      category: "Commercial",
-      image: "/assets/After_Annan.jpg",
-      description: "Retail space optimized for customer experience and product display"
-    }
-  ];
+  const [projects, setProjects] = useState([])
+  const [categories, setCategories] = useState([])
+
+
+  useEffect(() => {
+    fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/projects")
+    .then((res) => res.json())
+    .then((data) => { 
+      console.log("Fetched Data:", data);
+      setProjects(data.projects)
+    }).catch((err) => console.error("Error fetching images:", err));
+
+    fetch("https://api.sheety.co/b4b6c51b621eecddb501b52879936063/monolithicWebsite/categories")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Fetched data for categories: ", data)
+      setCategories([...data.categories.map(c => c.name)])
+    })
+  }, [])
+
 
   const [filter, setFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -56,7 +31,6 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === filter);
 
-  const categories = ['All', 'Residential', 'Commercial'];
 
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-gray-100 to-blue-50">
@@ -91,7 +65,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
+          {filteredProjects.slice(0, 5).map(project => (
             <div
               key={project.id}
               className="group relative overflow-hidden rounded-xl shadow-lg bg-white cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
@@ -101,7 +75,7 @@ const Projects = () => {
               {/* Project Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.thumbnail}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
@@ -128,7 +102,7 @@ const Projects = () => {
                 }`}>
                   <div className="text-center text-white transform transition-transform duration-300 translate-y-4 group-hover:translate-y-0">
                     <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-sm px-4">{project.description}</p>
+                    <p className="text-sm px-4">{project.shortDescription}</p>
                     <button className="mt-4 px-6 py-2 bg-white text-gray-800 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300">
                       View Details
                     </button>
@@ -142,11 +116,23 @@ const Projects = () => {
                   {project.title}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {project.description}
+                  {project.shortDescription}
                 </p>
               </div>
             </div>
           ))}
+          {/* View All Projects Button */}
+          {filteredProjects.length > 5 && (
+            <div className="flex items-center justify-center rounded-4xl shadow-lg bg-yellow-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <button
+                onClick={() => console.log("Navigate to Projects Page")}
+                className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition-colors duration-300"
+              >
+                View All Projects
+              </button>
+            </div>
+          )}
+
         </div>
       </div>
     </section>
