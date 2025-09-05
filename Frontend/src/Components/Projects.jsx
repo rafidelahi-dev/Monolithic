@@ -5,6 +5,7 @@ import "../App.css";
 const Projects = () => {
   const { data, loading } = useContext(DataContext);
 
+  if (!data || !data.projects) return <p>No projects available</p>;
 
   // Extract data
   const projects = data.projects;
