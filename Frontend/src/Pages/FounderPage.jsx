@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { DataContext } from "../Components/DataProvider";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 
 const FounderPage = () => {
   const { data, loading } = useContext(DataContext);
