@@ -8,8 +8,9 @@ import Hero from "./components/Hero";
 import About from "./Components/About";
 import Projects from "./Components/Projects";   // preview (5 items + View All)
 import Founder from "./Components/Founder";    // preview (short + Know More)
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
+
 
 // Full pages (create these files under src/pages/)
 import ProjectsPage from "./Pages/ProjectsPage";
