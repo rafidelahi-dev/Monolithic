@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
-import { DataContext } from "./DataProvider";
-import { Link } from "react-router-dom";
+import { DataContext } from "../Components/DataProvider";
 
-const Founder = () => {
+const FounderPage = () => {
   const { data, loading } = useContext(DataContext);
   const [isHovered, setIsHovered] = useState(false);
-
   const founder = data.founder[0]; // get first founder row
 
   // Sample founder data - replace with your uncle's actual information
@@ -67,10 +65,11 @@ const Founder = () => {
             >
               <img
                 src={founder.imageurl}
-                alt={founder.name}
+                alt={founderData.name}
                 className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
-                  e.target.src = "https://res.cloudinary.com/drptebzjv/image/upload/v1757034989/Founder_ad62aj.jpg"}}
+                  e.target.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                }}
               />
               
               {/* Hover Overlay with Quote */}
@@ -103,7 +102,7 @@ const Founder = () => {
             {/* Name & Title */}
             <div>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-                {founder.name}
+                {founderData.name}
               </h3>
               <p className="text-xl text-yellow-600 font-medium mb-6">
                 {founder.title}
@@ -128,18 +127,63 @@ const Founder = () => {
 
             {/* Certifications */}
             <div>
-              <Link
-              to="/founder"
-              className="inline-block mt-6 px-6 py-3 bg-yellow-600 text-white font-semibold rounded-xl shadow-md hover:bg-yellow-700 transition-colors duration-300"
-            >
-              Learn More About Me
-            </Link>
+              <h4 className="text-lg font-bold text-gray-800 mb-3">Certifications</h4>
+              <div className="flex flex-wrap gap-2">
+                {(founder.certifications ? founder.certifications.split(",") : []).map((cert, index) => (
+                <span
+                    key={index}
+                    className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                >
+                    {cert.trim()}
+                </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Expertise Grid */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-bold text-gray-800 text-center mb-12">Areas of Expertise</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {(founder.expertise ? founder.expertise.split(",") : []).map((skill,index) => (
+                <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-6 text-center hover:shadow-lg hover:border-blue-300 transition-all duration-300 group"
+                >
+                <div className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                    {skill.trim()}
+                </div>
+                </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Core Values */}
+        <div>
+          <h3 className="text-3xl font-bold text-gray-800 text-center mb-12">Core Values</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {(founder.values ? JSON.parse(founder.values) : []).map((value, index) => (
+                <div
+                key={index}
+                className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <span className="text-white font-bold text-xl">{index + 1}</span>
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                    {value.title}
+                </h4>
+                <p className="text-gray-600 text-center leading-relaxed">
+                    {value.description}
+                </p>
+                </div>
+            ))}
+          </div>
+        </div>   
       </div>
     </section>
   );
 };
 
-export default Founder;
+export default FounderPage;

@@ -1,29 +1,54 @@
-import './App.css'
-import Hero from './Components/Hero'
-import About from './Components/About'
-import Projects from './Components/Projects'
-import Founder from './Components/Founder'
-import Contact from './Components/Contact'
-import Footer from './Components/Footer'
-import Navbar from './Components/Navbar'
+// src/App.jsx
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DataProvider from './Components/DataProvider'
 
-function App() {
-  
+import Navbar from "./Components/Navbar";
+import Hero from "./components/Hero";
+import About from "./Components/About";
+import Projects from "./Components/Projects";   // preview (5 items + View All)
+import Founder from "./Components/Founder";    // preview (short + Know More)
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
+// Full pages (create these files under src/pages/)
+import ProjectsPage from "./Pages/ProjectsPage";
+import FounderPage from "./Pages/FounderPage";
+import ContactsPage from "./Pages/ContactsPage";
+
+function App() {
   return (
-    <>
-    <DataProvider>
-      <Navbar/>
-      <Hero/>
-      <About/>
-      <Projects/>
-      <Founder/>
-      <Contact/>
-      <Footer/>
-    </DataProvider>
-    </>
-  )
+    <BrowserRouter>
+      <DataProvider>
+        <Navbar />
+
+        <Routes>
+          {/* Landing / single-page experience */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <About />
+                <Projects />
+                <Founder />
+                <Contact />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Dedicated pages */}
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/founder" element={<FounderPage />} />
+          <Route path="/contact" element={<ContactsPage />} />
+
+          {/* Optional catch-all */}
+          <Route path="*" element={<div className="min-h-screen flex items-center justify-center">Page not found</div>} />
+        </Routes>
+      </DataProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

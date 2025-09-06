@@ -114,7 +114,7 @@ const Projects = () => {
             <div className="flex items-center justify-center rounded-4xl shadow-lg bg-yellow-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
               <button
                 onClick={() => console.log("Navigate to Projects Page")}
-                className="px-8 py-4 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition-colors duration-300"
+                className="px-8 py-4 w-full lg:w-60 bg-yellow-600 text-white font-semibold rounded-full hover:bg-yellow-700 transition-colors duration-300"
               >
                 View All Projects
               </button>
