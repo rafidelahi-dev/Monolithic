@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DataProvider from './Components/DataProvider'
 
 import Navbar from "./Components/Navbar";
-import Hero from "./components/Hero";
+import Hero from "./Components/Hero";
 import About from "./Components/About";
 import Projects from "./Components/Projects";   // preview (5 items + View All)
 import Founder from "./Components/Founder";    // preview (short + Know More)
