@@ -8,40 +8,6 @@ const Founder = () => {
 
   const founder = data.founder[0]; // get first founder row
 
-  // Sample founder data - replace with your uncle's actual information
-  const founderData = {
-    name: "Iftekhar Uddin Shovon",
-    title: "Principal Interior Designer & Founder",
-    image: "/assets/Founder.jpg", // Add your uncle's professional photo
-    experience: "10+ Years",
-    projectsCompleted: "200+",
-    certifications: ["Certified Interior Designer", "Sustainable Design Specialist"],
-    philosophy: "I believe that great design isn't just about making spaces beautiful—it's about creating environments that enhance the way people live, work, and connect.",
-    story: "My journey in interior design began over 15 years ago with a simple belief: every space has the potential to tell a story. What started as a passion for transforming homes has evolved into a comprehensive design practice that serves both residential and commercial clients.",
-    expertise: [
-      "Residential Interior Design",
-      "Commercial Space Planning",
-      "Sustainable Design Solutions",
-      "Custom Furniture Design",
-      "Project Management",
-      "3D Visualization"
-    ],
-    values: [
-      {
-        title: "Client-Centered Approach",
-        description: "Every project begins with understanding your unique needs, lifestyle, and vision."
-      },
-      {
-        title: "Sustainable Design",
-        description: "Committed to eco-friendly materials and practices that benefit both clients and the environment."
-      },
-      {
-        title: "Timeless Elegance",
-        description: "Creating designs that stand the test of time while incorporating contemporary functionality."
-      }
-    ]
-  };
-
   return (
     <section id="founder" className="py-20 bg-white">
       <div className="container mx-auto px-6">
